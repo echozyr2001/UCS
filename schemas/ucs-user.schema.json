@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UCS-User",
+  "description": "UCS 统一用户信息结构定义，用于聚合多平台用户数据",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "用户唯一标识"
+    },
+    "platform": {
+      "type": "string",
+      "description": "所属平台标识（如 bilibili, xiaohongshu）"
+    },
+    "nickname": {
+      "type": "string",
+      "description": "用户昵称"
+    },
+    "avatar_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "用户头像URL"
+    },
+    "bio": {
+      "type": "string",
+      "description": "用户简介/签名"
+    },
+    "followers": {
+      "type": "integer",
+      "description": "粉丝数"
+    },
+    "followings": {
+      "type": "integer",
+      "description": "关注数"
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "是否认证用户"
+    },
+    "raw": {
+      "type": "object",
+      "description": "原始平台用户数据字段保留"
+    }
+  },
+  "required": [
+    "user_id",
+    "platform",
+    "nickname"
+  ]
+}

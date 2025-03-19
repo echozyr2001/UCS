@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UCS-Content",
+  "description": "UCS 统一内容结构定义，用于聚合多平台内容数据",
+  "type": "object",
+  "properties": {
+    "content_id": {
+      "type": "string",
+      "description": "内容唯一标识"
+    },
+    "platform": {
+      "type": "string",
+      "description": "所属平台标识（如 bilibili, xiaohongshu）"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "video",
+        "article",
+        "note",
+        "live"
+      ],
+      "description": "内容类型"
+    },
+    "title": {
+      "type": "string",
+      "description": "内容标题"
+    },
+    "description": {
+      "type": "string",
+      "description": "内容描述/摘要"
+    },
+    "cover_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "封面图 URL"
+    },
+    "content_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "内容链接地址"
+    },
+    "author": {
+      "$ref": "./ucs-user.schema.json",
+      "description": "作者用户信息结构"
+    },
+    "tags": {
+      "type": "array",
+      "description": "内容标签",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "description": "内容指标（播放量、点赞数等）",
+      "properties": {
+        "views": {
+          "type": "integer"
+        },
+        "likes": {
+          "type": "integer"
+        },
+        "comments": {
+          "type": "integer"
+        },
+        "shares": {
+          "type": "integer"
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "创建时间"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "更新时间"
+    },
+    "raw": {
+      "type": "object",
+      "description": "原始平台数据字段保留，用于兼容字段映射"
+    }
+  },
+  "required": [
+    "content_id",
+    "platform",
+    "type",
+    "title"
+  ]
+}

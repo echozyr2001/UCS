@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UCS-Comment",
+  "description": "UCS 统一评论结构定义，用于聚合多平台评论数据",
+  "type": "object",
+  "properties": {
+    "comment_id": {
+      "type": "string",
+      "description": "评论唯一标识"
+    },
+    "content_id": {
+      "type": "string",
+      "description": "评论所属内容ID"
+    },
+    "platform": {
+      "type": "string",
+      "description": "所属平台标识（如 bilibili, xiaohongshu）"
+    },
+    "user": {
+      "$ref": "./ucs-user.schema.json",
+      "description": "评论用户信息结构"
+    },
+    "text": {
+      "type": "string",
+      "description": "评论内容文本"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "评论创建时间"
+    },
+    "like_count": {
+      "type": "integer",
+      "description": "评论点赞数"
+    },
+    "replies": {
+      "type": "array",
+      "description": "子评论（回复列表）",
+      "items": {
+        "$ref": "./ucs-comment.schema.json"
+      }
+    },
+    "raw": {
+      "type": "object",
+      "description": "原始平台评论数据字段保留"
+    }
+  },
+  "required": [
+    "comment_id",
+    "content_id",
+    "platform",
+    "user",
+    "text"
+  ]
+}
